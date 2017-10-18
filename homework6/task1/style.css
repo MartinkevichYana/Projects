@@ -1,0 +1,36 @@
+div {
+  height: 100px;
+}
+input {
+  width: 300px;
+  height:40px;
+  float:left;
+  font-size: 20px;
+  margin-right:20px;
+  margin-left: 20px;
+  margin-top:20px;
+  padding-left:10px;
+  padding-right:10px;
+}
+
+button {
+  background:  #00BFFF ;
+  border: 2px solid   #ADD8E6;
+  color: white;
+  height: 40px;
+  width: 120px;
+  font-size: 20px;
+  text-align: center;
+  margin-left: 5px;
+  transition: 0.2s;
+  margin-top: 20px;
+}
+
+button:hover {
+  background:   #838B8B;
+  border: 1px solid   #838B8B;
+}
+
+button:active {
+   background: #838B8B;
+}
