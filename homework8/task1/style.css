@@ -1,0 +1,35 @@
+.menu {
+  display: none;
+  position: absolute;
+  background-color: #FFE4C4;
+  border: solid 1px #FFF8DC;
+  box-shadow: 1px 1px 2px #FFF8DC;
+  font-size: 18px;
+  font-family: cursive;
+}
+
+.menu.active {
+	display: block;
+}
+
+li:hover { 
+  background: linear-gradient(#FFF8DC, #D2B48C) #FFF8DC; 
+  width: 200px;
+  margin-right: 40px;
+  height: 27px;
+  padding-left: 5px;
+  border-radius: 4px;
+}
+
+li:active {
+  background: linear-gradient(#FFF8DC, #D2B48C) #FFF8DC;
+}
+
+li {
+  list-style: none;
+}
+
+hr {
+  width: 180px;
+  margin-right: 50px;
+}
