@@ -1,0 +1,107 @@
+tbody {
+  background-color: #87CEEB;
+}
+body {
+  background-color: #B0E0E6;
+}
+
+.window {
+  width: 620px;
+  height: 620px;
+  background-color: rgba(0, 0, 0, 0.8);
+  top: 8px;
+}
+
+.wind {
+  width: 620px;
+  height: 620px;
+  background-color: rgba(0, 0, 0, 0.8);
+  top: 8px;
+  display: none;
+}
+
+.wind.vis {
+  display: block;
+}
+
+.window.visible {
+  display: none;
+}
+
+.bc {
+ background-image: url(clouds.png);
+}
+
+.exit {
+  background-image: url(e.png);
+}
+
+div {
+  position: absolute;
+}
+
+button {
+  margin-left: 220px;
+  margin-top: 230px;
+  width: 200px;
+  height: 70px;
+  font-size: 120%;
+  color: rgba(255,255,255,.9);
+  text-shadow: #2e7ebd 0 1px 2px;
+  text-decoration: none;
+  text-align: center;
+  border: 1px solid;
+  border-color: #60a3d8 #2970a9 #2970a9 #60a3d8;
+  border-radius: 6px;
+  outline: none;
+  background: #60a3d8 linear-gradient(#89bbe2, #60a3d8 50%, #378bce);
+  box-shadow: inset rgba(255,255,255,.5) 1px 1px;
+  font-weight: 700;
+  -webkit-animation: pulsate 1.4s linear infinite;
+  animation: pulsate 1.4s linear infinite;
+}
+
+button:hover {
+  color: rgb(255,255,255);
+  background-image: linear-gradient(#9dc7e7, #74afdd 50%, #378bce);
+}
+
+button:active {
+  color: rgb(255,255,255);
+  border-color: #2970a9;
+  background-image: linear-gradient(#5796c8, #6aa2ce);
+}
+
+@-webkit-keyframes pulsate {
+  50% {color: #fff; text-shadow: 0 -1px rgba(0,0,0,.3), 0 0 5px #ffd, 0 0 8px #fff;}
+}
+
+@keyframes pulsate {
+  50% {color: #fff; text-shadow: 0 -1px rgba(0,0,0,.3), 0 0 5px #ffd, 0 0 8px #fff;}
+}
+
+table {
+  border-spacing: 0;
+  margin: auto;
+}
+
+td, tr {
+  height: 60px;
+  width: 60px;
+}
+
+.active {
+  background-image: url(23.png);
+}
+
+img {
+  height: 55px;
+  width: 55px;
+  display: block;
+}
+
+h1 {
+  color: white;
+  font-size: 20px;
+  margin-left: 50px;
+}
