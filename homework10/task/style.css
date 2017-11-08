@@ -1,0 +1,13 @@
+body {
+  background-image: url(123.jpg) ;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.s, .g, .ga {
+  display: none;
+}
+
+div {
+  display: block;
+}
