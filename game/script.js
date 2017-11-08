@@ -20,6 +20,18 @@ button.innerHTML = "НАЖМИТЕ, ЧТОБЫ НАЧАТЬ";
 butend.innerHTML = "ИГРАТЬ ЕЩЁ РАЗ";
 var time=0;
 
+var labirint = [
+[1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+[1, 0, 0, 1, 0, 2, 2, 0, 0, 0],
+[1, 1, 2, 1, 0, 1, 1, 1, 0, 1],
+[1, 1, 0, 1, 0, 1, 2, 1, 1, 1],
+[1, 0, 0, 1, 2, 0, 0, 0, 0, 1],
+[1, 2, 1, 1, 1, 1, 1, 1, 2, 1],
+[1, 0, 1, 0, 2, 2, 1, 1, 0, 1],
+[1, 2, 1, 0, 1, 0, 1, 1, 2, 1],
+[1, 0, 0, 0, 1, 2, 2, 0, 0, 1],
+[1, 0, 1, 1, 1, 1, 1, 1, 1, 1]];
+
 function cr() { 
 
     function td(tr) {
@@ -37,70 +49,21 @@ function cr() {
         td(tr);    
     }
 
-    for(var i=1; i<98; i+=7)
+    for(var i=0;i<labirint.length; i++)
     {
-        var td1=document.getElementsByTagName('td')[i];
-        var td2=document.getElementsByTagName('td')[i+1];
-        td1.setAttribute("class","bc");
-        td2.setAttribute("class","bc");
-    }
-
-    for(var i=0; i<10; i++)
-    {
-        var td1=document.getElementsByTagName('td')[i];
-        td1.setAttribute("class","active");
-    }
-
-    for(var i=10; i<100; i+=10)
-    {
-        var td1=document.getElementsByTagName('td')[i];
-        td1.setAttribute("class","active");
-    }
-    for(var i=29; i<100; i+=10)
-    {
-        var td1=document.getElementsByTagName('td')[i];
-        td1.setAttribute("class","active");
-    }
-    for(var i=92; i<100; i++)
-    {
-        var td1=document.getElementsByTagName('td')[i];
-        td1.setAttribute("class","active");
-    }
-
-    for(var i=13; i<54;i+=10)
-    {
-        var td1=document.getElementsByTagName('td')[i];
-        td1.setAttribute("class", "active");
-    }
-    for(var i=26; i<28;i++)
-    {
-        var td1=document.getElementsByTagName('td')[i];
-        td1.setAttribute("class", "active");
-        var td2=document.getElementsByTagName('td')[i+11];
-        td2.setAttribute("class", "active");
-    }
-    for(var i=21; i<32;i+=10)
-    {
-        var td1=document.getElementsByTagName('td')[i];
-        td1.setAttribute("class", "active");
-        var td2=document.getElementsByTagName('td')[i+4];
-        td2.setAttribute("class", "active");  
-    }
-    for(var i=52; i<58;i++)
-    {
-        var td1=document.getElementsByTagName('td')[i];
-        td1.setAttribute("class", "active");  
-    }
-    for(var i=62, k=66; i<73;i+=10, k+=10)
-    {
-        var td1=document.getElementsByTagName('td')[i];
-        td1.setAttribute("class", "active");
-        var td2=document.getElementsByTagName('td')[i+12];
-        td2.setAttribute("class", "active");  
-        var td3=document.getElementsByTagName('td')[k];
-        td3.setAttribute("class", "active");  
-        var td4=document.getElementsByTagName('td')[k+1];
-        td4.setAttribute("class", "active");  
+        for(var j=0;j<labirint[i].length; j++)
+        {
+            if(labirint[i][j]==1)
+            {
+                 var td=document.getElementsByTagName('td')[(i*10)+j];
+                 td.setAttribute("class","active");
+            }
+            if(labirint[i][j]==2)
+            {
+                 var td=document.getElementsByTagName('td')[(i*10)+j];
+                 td.setAttribute("class","bc");
+            }
+        }
     }
 }
 
