@@ -13,9 +13,20 @@ window.addEventListener("scroll", function(e) {
  	if (window.pageYOffset > yBlock) 
  	{
         block.classList.add('active');
+        if(window.pageYOffset < yWind)
+ 		{
+ 			block.style.marginTop="";
+ 		}
     }
     if (window.pageYOffset > yWind) 
  	{
-        block.classList.remove('active');
+ 		block.classList.remove('active');
+ 		if(window.pageYOffset > yWind)
+ 		{
+ 			block.style.marginTop="2002px";
+ 		}
+        else
+        	block.style.marginTop="500px";
+
     }
  })
