@@ -102,18 +102,20 @@ Shop.prototype.Display = function() {
 }
 
 function Market() {};
+
 Market.prototype.Output = function(ashop) {
+
 	for(var i=0; i<ashop.length; i++)
 	{
-		console.log((i+1)+") "+ashop[i].name);
+		console.log((i+1)+". "+ashop[i].name);
 	}
 }
 
-Market.prototype.Statistic = function(ashop) {
+Market.prototype.Statistic = function(ashop) {   //making
 
 	ashop.sort(compare);
 	var str = ashop.join(" ");
-	console.log(str);
+	console.log("Statistic: " + str);
 }
 
 function compare(a, b) {
@@ -121,65 +123,79 @@ function compare(a, b) {
   if (a < b) return -1;
 }
 
-var butAS = document.getElementsByTagName("button")[0];
-var butCS = document.getElementsByTagName("button")[4];
-var addb = document.getElementsByTagName("button")[1];
-var writeOff = document.getElementsByTagName("button")[2];
-var sell = document.getElementsByTagName("button")[3];
-var inp = document.getElementsByTagName("input");
-var divG = document.getElementById("goods");
+var c=0;
 var div = document.getElementsByTagName("div")[0];
-var clS = document.getElementsByClassName("s");
-var clG = document.getElementsByClassName("g");
-var clGa = document.getElementsByClassName("ga");
-var res = document.getElementById("res");
-var cS=0;
-var cG = 0;
-var shop;
-var good=0;
-var arrShop=[];
-butAS.addEventListener("click", function() {
-	if( cS==0)
+var adb = document.createElement("button");
+var adgoods = document.createElement("button");
+var offgoods = document.createElement("button");
+var sellgoods = document.createElement("button");
+var result = document.createElement("button");
+var divadd = document.createElement("div");
+var divoff = document.createElement("div");
+var divsell = document.createElement("div");
+adgoods.innerHTML = "Add Goods";
+offgoods.innerHTML = "WriteOff Goods";
+sellgoods.innerHTML = "Sell Goods";
+result.innerHTML = "RESULT";
+document.body.insertBefore(result, div.nextChild);
+var add = document.createElement("div");
+adb.innerHTML = "Add Shop";
+div.appendChild(adb);
+div.insertBefore(add, adb.nextChild);
+adb.addEventListener("click", function() {
+	add.innerHTML +="<input placeholder='name' class='s'><input placeholder='adress' class='s'><input placeholder='markup' class='s'><input placeholder='number of same goods' class='s'><h4>Enter the information of same goods</h4>\
+	<input placeholder='name' class='s'><input placeholder='type' class='s'><input placeholder='price' class='s'>\
+	<button>Add Goods</button><button>WriteOff Goods</button><button>Sell Goods</button>";
+	var adgoods = document.getElementsByTagName("button")[1+c];
+	var offgoods = document.getElementsByTagName("button")[2+c];
+	var sellgoods = document.getElementsByTagName("button")[3+c];
+	adgoods.addEventListener("click", function() {
+		add.insertBefore(divadd, adgoods.nextChild);
+		divadd.innerHTML += "<input placeholder='add type' class='a'><input placeholder='add number' class='a'>";
+	});
+	offgoods.addEventListener("click", function() {
+		add.insertBefore(divoff, offgoods.nextChild);
+		divoff.innerHTML += "<input placeholder='write off type' class='b'><input placeholder='write off number' class='b'>";
+	});
+	sellgoods.addEventListener("click", function() {
+		add.insertBefore(divsell, sellgoods.nextChild);
+		divsell.innerHTML += "<input placeholder='sell type' class='c'><input placeholder='sell number' class='c'>";
+	});
+	c+=3;
+});
+
+result.addEventListener("click", function() {
+	var market = new Market();
+	var outshop = [];
+	var statshop = [];
+	var inp = document.getElementsByClassName("s");
+	var a = document.getElementsByClassName("a");
+	var b = document.getElementsByClassName("b");
+	var c = document.getElementsByClassName("c");
+	var q = Math.floor(inp.length/7);
+	for(var i=0; i<q; i++)
 	{
-		for(var i=0; i<clS.length; i++)
+		var shop = new Shop(inp[0+7*i].value, inp[1+7*i].value, inp[2+7*i].value, inp[3+7*i].value, inp[4+7*i].value, inp[5+7*i].value, inp[6+7*i].value);
+		if(a[0+7*i] != undefined)
 		{
-			clS[i].style.display = "block";
+			shop.Add(a[0+7*i].value, Number(a[1+7*i].value));
 		}
-	}
-	cS++;
-	addb.addEventListener("click", function() {
-	for(var i=0; i<clGa.length; i++)
-	{
-		clGa[i].style.display = "block";
-	}
+	    if(b[0+7*i] != undefined)
+	    {
+			shop.WriteOff(b[0+7*i].value, Number(b[1+7*i].value));
+		}
+		if(c[0+7*i] != undefined)
+		{
+			shop.Sell(c[0+7*i].value, Number(c[1+7*i].value));
+		}
+		outshop.push(shop);
+		statshop.push(shop.income);
+		shop.Display();
+		}
+		console.log("Name of shops: ");
+		market.Output(outshop);
+		market.Statistic(statshop);
 });
-});
-
-butCS.addEventListener("click", function() {
-
-	shop = new Shop(inp[0].value, inp[1].value, inp[2].value, inp[3].value, inp[4].value, inp[5].value, inp[6].value);
-	shop.Add(inp[7].value, inp[8].value);
-	arrShop.push(shop.name);
-	for(var i=0; i<clS.length; i++)
-	{
-		clS[i].style.display = "";
-	}
-	for(var i=0; i<clG.length; i++)
-	{
-		clG[i].style.display = "block";
-	}
-	cS--;
-	cG++;
-    shop.Display();
-});
-
-
-
-res.addEventListener("click", function() {
-	alert(arrShop);
-});
-
-
 
 /*var shop = new Shop("A","Minsk",33, 4);
 var shop1 = new Shop("B","Mogilev",25, 7);

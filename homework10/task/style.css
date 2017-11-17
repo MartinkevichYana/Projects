@@ -1,13 +1,33 @@
 body {
-  background-image: url(123.jpg) ;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.s, .g, .ga {
-  display: none;
+  	color: #2F4F4F;
 }
 
 div {
   display: block;
+}
+button {
+	background-color: #66CDAA;
+	border: 1px solid #66CDAA;
+}
+input, button
+{
+	display: block;
+	padding-top: 7px;
+	margin-top: 7px;
+	padding-left: 3px;
+	font-size: 15px;
+	border: 1px solid #778899;
+}
+
+.a {
+	background: pink;
+}
+.b {
+	background: #C0C0C0;
+}
+.c {
+	background: #FFA07A;
+}
+.s {
+	background: #DEB887;
 }
