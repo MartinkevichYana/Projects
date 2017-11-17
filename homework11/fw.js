@@ -35,7 +35,7 @@ var fw= {
 			var xhr = new XMLHttpRequest();
 			xhr.open(m, p, true);
 			xhr.onload = function() {
-				text = this.responseText;
+				var text = this.responseText;
 				f(text);
 			}
 			xhr.send(null);
