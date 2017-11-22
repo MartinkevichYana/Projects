@@ -1,0 +1,21 @@
+img {
+	height: 20px;
+	width: 20px;
+	padding: 3px;
+}
+
+.color, .back {
+	display: none;
+}
+div {
+	display: block;
+	padding: 5px;
+	margin: 5px;
+}
+input {
+	width: 60px;
+}
+.sost {
+	border: 2px solid #87CEFA;
+	background-color: #FFF5EE;
+}
