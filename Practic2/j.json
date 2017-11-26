@@ -1,0 +1,15 @@
+[{
+	"tittle": "Женская одежда",
+    "adr":"1.json",
+    "hash":"#one"
+},
+{
+   	"tittle": "Мужская одежда",
+    "adr":"2.json",
+    "hash":"#two"
+},
+{
+  	"tittle": "Детская одежда",
+    "adr":"3.json",
+    "hash":"#three"
+}]
