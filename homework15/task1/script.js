@@ -1,13 +1,29 @@
 var can = document.getElementById("c");
 var ctx = can.getContext("2d");
-can.addEventListener("mousemove", function(e) {
-	var x = e.clientX;
-	var y = e.clientY;
-	console.log("x: "+x+"  y:  "+y);
-	ctx.font="12px Tahoma";
-	ctx.textAlign = "center";
-	ctx.strokeText("*",x, y);
+var x = 0;
+var y = 0;
+var a = 0;
+var b = 0;
+
+can.addEventListener("mousedown", function(e){
+	x = e.clientX;
+	y = e.clientY;
+	can.addEventListener("mousemove", func)
 })
+can.addEventListener("mouseup", function(e) {
+	can.removeEventListener("mousemove", func)
+})
+function func(e){
+	ctx.beginPath();
+	a = x;
+	b = y;
+    ctx.moveTo(a,b);
+	ctx.lineTo(e.clientX,e.clientY);
+	ctx.stroke();
+	x = e.clientX;
+	y = e.clientY;
+}
+
 
 /*ctx.fillStyle = "rgba(200, 0, 0, 0.5)";
 ctx.fillRect(20,20,220,220);
