@@ -87,7 +87,9 @@ link.addEventListener("click", function() {
 	document.execCommand ("createlink", false, inplink.value);
 });
 clear.addEventListener("click", function() {
-	dtext.innerHTML = text;
+	//dtext.innerHTML = text;
+	document.execCommand('removeformat',false,null);
+	
 });
 dtext.addEventListener("mouseup", function() {
 	if(document.queryCommandState("bold")==true)
