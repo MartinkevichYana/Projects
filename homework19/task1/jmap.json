@@ -1,0 +1,18 @@
+[{
+	"lat": "53.85283553", 
+	"lng": "27.5955894",
+	"tittle": "Minsk",
+	"content": "Minsk is the capital and largest city of Belarus"
+},
+{
+	"lat": "44.402766", 
+	"lng": "26.14539409",
+	"tittle": "Bukarest",
+	"content": "Bukarest is the capital and largest city of Romania"
+},
+{
+	"lat": "41.90227704", 
+	"lng": "12.54638672",
+	"tittle": "Rome",
+	"content": "Rome is the capital of Italy"
+}]
