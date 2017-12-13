@@ -1,4 +1,3 @@
-
 var pl = document.getElementsByTagName("button")[0];
 var st = document.getElementsByTagName("button")[1];
 var r1 = document.getElementsByTagName("button")[2];
@@ -39,12 +38,16 @@ xhr.onload = function() {
 	{
 		(function(x){
 
-			var butpl = document.getElementsByClassName("play")[i];
-			butpl.addEventListener("click", function() {
+			var butpl = document.getElementsByClassName("play");
+			butpl[i].addEventListener("click", function() {
 				ptag.innerHTML = "<img src=" + mus[x].alb + " class='alb'><span id='sp'>" + mus[x].name + "</span>";
 				d1.innerHTML = "<audio src=" + mus[x].adr + " id='song'></audio>";
 				var s = document.getElementById('song');
 				s.volume = 0;
+				s.addEventListener("ended", function() {
+					var event = new Event("click");
+					butpl[(x+1)%3].dispatchEvent(event);
+				})
 				if(k!= x)
 				{
 					c=0;
@@ -61,7 +64,36 @@ xhr.onload = function() {
 					}
 				}
 				k=x;
-				f(s);
+				s.addEventListener("loadedmetadata", function() {
+					var s = document.getElementById('song');
+					id = setInterval(function() {
+					var sec = s.currentTime;
+					var len = s.duration;
+					inmin(sec, sp1);
+					sp.innerHTML = "/";
+					inmin(len, sp2);
+					var b = Number(div.getBoundingClientRect().width);
+					var a = (b*Number(sec))/Number(len);
+					d.style.width = String(a)+"px";
+					})
+				}, 500);	
+				if(c==0)
+				{
+					s.play();
+					clearInterval(id);
+					s.volume = inp.value;
+					c++;
+					count++;
+					pl.innerHTML = "<img src='p.png'>";
+				}
+				else
+				{
+					s.pause();
+					clearInterval(id);
+					c--;
+					count--;
+					pl.innerHTML = "<img src='pl.png'>";
+				}
 			});
 
 			pl.addEventListener("click", function() {
@@ -130,7 +162,7 @@ xhr.onload = function() {
 			});
 		})(i)
 	}
-	function f(s) {
+	function f(s, x) {
 				s.addEventListener("loadedmetadata", function() {
 					var s = document.getElementById('song');
 					id = setInterval(function() {
@@ -164,8 +196,39 @@ xhr.onload = function() {
 			}
 
 			function inmin(sec, tag) {
-				var min = Math.floor(sec/60);
-				var second = Math.ceil(sec - (60*min));
+				var m = Math.floor(sec/60);
+				if(Math.floor(sec/60) < 10)
+				{
+					if(Math.ceil(sec - (60*m)) == 60)
+					{ 
+						min = "0"+Math.floor(sec/60 + 1);
+					}
+					else
+					{
+						min = "0"+Math.floor(sec/60);
+					}
+				}
+				else
+				{
+					min = Math.floor(sec/60);
+				}
+				if(Math.ceil(sec - (60*m)) < 10)
+				{ 
+					second = "0"+Math.ceil(sec - (60*m));
+				}
+				else
+				{
+					if(Math.ceil(sec - (60*m)) == 60)
+					{ 
+						second = "00";
+					}
+					else
+					{
+						second = Math.ceil(sec - (60*m));
+					}
+				}
+				
+				
 				tag.innerHTML = min + ":" + second;
 			}
 }
