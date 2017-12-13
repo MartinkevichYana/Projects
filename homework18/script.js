@@ -2,51 +2,58 @@ var chb = document.getElementsByTagName("button")[0];
 var neg = document.getElementsByTagName("button")[1];
 var cr = document.getElementsByTagName("button")[2];
 var d = document.getElementsByTagName("div")[0];
-var img = document.getElementById('img');
 var can = document.getElementById('c');
 var ctx = can.getContext('2d');
-ctx.drawImage(img, 0, 0);
+var img = new Image();
+var img1 = new Image();
+img.src = "im.jpg";
 var k = 0;
 
 can.addEventListener("dragenter", function(e) {
 	this.innerText = "";
-});
+})
 can.addEventListener("dragleave", function(e) {
 	this.innerText = "";
-});
+})
 can.addEventListener("dragover", function(e) {
 	e.preventDefault();
-});
+})
 can.addEventListener("drop", function(e) {
 	e.preventDefault();
-	ctx.clearRect(0, 0, 1500, 500);
 	var dT = e.dataTransfer;
 	var fileReader = new FileReader();
 	fileReader.onload = function() {
+		ctx.clearRect(0, 0, 1500, 500);
 		img.src = this.result;
-		ctx.drawImage(img, 0, 0);
+		img1.src = this.result;	
+	}
+	fileReader.readAsDataURL(dT.files[0]);
+})
+
+img.onload = function() {
+	ctx.drawImage(img, 0, 0);
 		if(k == 1)
 		{
+			ctx.drawImage(img1, 0, 0);
 			var idata = ctx.getImageData(0, 0, 1000, 500);
 			var idataf = blwh(idata);
 			ctx.putImageData(idataf, 0, 0);
 		}
 		if(k == 2)
 		{
+			ctx.drawImage(img1, 0, 0);
 			var idata = ctx.getImageData(0, 0, 1000, 500);
 			var idataf = negativ(idata);
 			ctx.putImageData(idataf, 0, 0);
 		}
 		if(k == 3)
 		{
+			ctx.drawImage(img1, 0, 0);
 			var idata = ctx.getImageData(0, 0, 1000, 500);
 			var idataf = coar(idata);
 			ctx.putImageData(idataf, 0, 0);
 		}
-		
-	}
-	fileReader.readAsDataURL(dT.files[0]);
-});
+}
 
 chb.addEventListener("click", function() {
 	ctx.drawImage(img, 0, 0);
@@ -114,4 +121,3 @@ function negativ(data) {
 	}
 	return data;
 }
-
